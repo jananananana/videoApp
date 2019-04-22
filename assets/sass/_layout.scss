@@ -1,0 +1,5 @@
+.video-body {
+    @include font-smoothing;
+    font-family: $font;
+    font-size: $base-font-size;
+}

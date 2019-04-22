@@ -1,0 +1,51 @@
+<div class="video-c">
+
+    <button ng-click="view.previousVideo()" class="plain-button-e video-c__button">
+        <span class="visually-hidden">Previous Video</span>
+    </button>
+    <button ng-click="view.nextVideo()" class="plain-button-e video-c__button video-c__button--r">
+        <span class="visually-hidden">Next Video</span>
+    </button>
+
+    <!-- Video Media -->
+    <video
+        id="current-video"
+        class="video-c__vid"
+        preload="auto"
+        autoplay="true"
+        loop
+        src="{{view.currentVideo.video}}">
+    </video>
+
+    <!-- Captions -->
+    <ul ng-if="view.captions !== 'undefined'" class="captions-container">
+        <li ng-repeat="caption in view.captions" class="caption-c caption-c--{{$index}}">
+            <a class="caption-c__text caption-c__link" ng-if="caption.href" href="{{caption.href}}">{{caption.text}}</a>
+            <span class="caption-c__text" ng-if="!caption.href">{{caption.text}}</span>
+        </li>
+    </ul>
+
+    <!-- Controls at Bottom of Video -->
+    <ul class="mini-controls-c">
+        <li class="mini-controls-c__items">
+            <button ng-click="view.previousVideo()" class="plain-button-e mini-controls-c__button">
+                <span class="visually-hidden">Previous Video</span>
+                <ng-include src="'assets/images/icons/previous.svg'"></ng-include>
+            </button>
+        </li>
+        <li class="mini-controls-c__items">
+            <button ng-click="view.toggleMute()" class="plain-button-e mini-controls-c__button">
+                <span class="visually-hidden">Toggle Mute</span>
+                <ng-include ng-if="view.muted" src="'assets/images/icons/volumeoff.svg'"></ng-include>
+                <ng-include ng-if="!view.muted" src="'assets/images/icons/volumeon.svg'"></ng-include>
+            </button>
+        </li>
+        <li class="mini-controls-c__items">
+            <button ng-click="view.nextVideo()" class="plain-button-e mini-controls-c__button">
+                <span class="visually-hidden">Next Video</span>
+                <ng-include src="'assets/images/icons/next.svg'"></ng-include>
+            </button>
+        </li>
+    </ul>
+
+</div>
